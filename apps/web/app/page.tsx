@@ -127,9 +127,9 @@ export default function Home() {
         />
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-[5]">
-        <div className="absolute inset-0 bg-white/38" />
-        <div className="absolute -left-16 top-24 h-52 w-52 rounded-full bg-accent-soft/80 blur-3xl" />
-        <div className="absolute -right-20 top-6 h-64 w-64 rounded-full bg-warm-soft/85 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020611]/20 to-[#020611]/45" />
+        <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-[#2f7ab8]/28 blur-3xl" />
+        <div className="absolute -right-24 bottom-[-100px] h-[360px] w-[360px] rounded-full bg-[#031e45]/55 blur-3xl" />
       </div>
 
       <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-8 sm:px-10 lg:px-12">

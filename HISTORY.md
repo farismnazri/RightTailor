@@ -73,3 +73,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:17
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:17
+- Summary: Tuned landing overlays to remove the grey/washed look and preserve the darker blue Grainient background.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
