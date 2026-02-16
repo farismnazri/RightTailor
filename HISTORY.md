@@ -98,3 +98,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:24
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:24
+- Summary: Updated landing page non-card text colors to white with drop shadows for better contrast on the dark layered background.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

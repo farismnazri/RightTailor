@@ -140,15 +140,26 @@ export default function Home() {
 
       <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-8 sm:px-10 lg:px-12">
         <nav className="animate-rise flex items-center justify-between">
-          <p className="font-display text-xl font-semibold tracking-tight">RightTailor</p>
+          <p className="font-display text-xl font-semibold tracking-tight text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)]">
+            RightTailor
+          </p>
           <div className="hidden gap-6 text-sm font-medium text-muted md:flex">
-            <a className="transition-colors hover:text-accent" href="#how-it-works">
+            <a
+              className="text-white/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] transition-colors hover:text-white"
+              href="#how-it-works"
+            >
               How it works
             </a>
-            <a className="transition-colors hover:text-accent" href="#group-orders">
+            <a
+              className="text-white/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] transition-colors hover:text-white"
+              href="#group-orders"
+            >
               Group orders
             </a>
-            <a className="transition-colors hover:text-accent" href="#size-matching">
+            <a
+              className="text-white/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] transition-colors hover:text-white"
+              href="#size-matching"
+            >
               Size matching
             </a>
           </div>
@@ -219,8 +230,10 @@ export default function Home() {
         </section>
 
         <section id="how-it-works" className="animate-rise-delay-2 mt-14">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">How it works</h2>
-          <p className="mt-3 max-w-3xl text-muted">
+          <h2 className="font-display text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-4xl">
+            How it works
+          </h2>
+          <p className="mt-3 max-w-3xl text-white/88 drop-shadow-[0_3px_10px_rgba(0,0,0,0.72)]">
             A practical flow for self profiles, children profiles, and tailor delegation before ordering suits, wedding
             outfits, or dresses.
           </p>
@@ -241,8 +254,10 @@ export default function Home() {
         </section>
 
         <section id="group-orders" className="mt-14">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Group orders without group confusion</h2>
-          <p className="mt-3 max-w-3xl text-muted">
+          <h2 className="font-display text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-4xl">
+            Group orders without group confusion
+          </h2>
+          <p className="mt-3 max-w-3xl text-white/88 drop-shadow-[0_3px_10px_rgba(0,0,0,0.72)]">
             For wedding parties and corporate batches, define one shared fabric, cut, and color while each participant
             keeps individual measurements.
           </p>
