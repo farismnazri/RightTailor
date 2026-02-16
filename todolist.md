@@ -59,3 +59,4 @@ Progress log
 - 2026-02-16: Removed the white wash over Grainient and replaced ambient overlays with deeper blue tones in `apps/web/app/page.tsx` so the background matches the intended dark blue look more closely.
 - 2026-02-16: Added a full-page Silk layer behind Grainient and set the Grainient color layer to 40% opacity in `apps/web/app/page.tsx`; installed `@react-three/fiber` and `three`, and added `apps/web/components/Silk.jsx`.
 - 2026-02-16: Adjusted typography for dark backgrounds by making non-card text white with drop-shadow treatment in `apps/web/app/page.tsx` (nav branding/links and section headings/descriptions outside cards).
+- 2026-02-16: Increased top nav tab contrast on dark background and simplified hero CTA into a single `Book an appointment` button (`apps/web/app/page.tsx`).

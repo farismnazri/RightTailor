@@ -143,21 +143,21 @@ export default function Home() {
           <p className="font-display text-xl font-semibold tracking-tight text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)]">
             RightTailor
           </p>
-          <div className="hidden gap-6 text-sm font-medium text-muted md:flex">
+          <div className="hidden gap-6 text-sm font-semibold md:flex">
             <a
-              className="text-white/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] transition-colors hover:text-white"
+              className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-[#dbe9ff]"
               href="#how-it-works"
             >
               How it works
             </a>
             <a
-              className="text-white/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] transition-colors hover:text-white"
+              className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-[#dbe9ff]"
               href="#group-orders"
             >
               Group orders
             </a>
             <a
-              className="text-white/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] transition-colors hover:text-white"
+              className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-[#dbe9ff]"
               href="#size-matching"
             >
               Size matching
@@ -182,13 +182,7 @@ export default function Home() {
                 href="/get-measured"
                 className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#0b6a6e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
-                Get measured
-              </Link>
-              <Link
-                href="/group-order"
-                className="rounded-full border border-accent/30 bg-white px-6 py-3 text-sm font-semibold text-accent transition duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-accent-soft/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                Create a group order
+                Book an appointment
               </Link>
             </div>
           </div>

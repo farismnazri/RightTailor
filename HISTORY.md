@@ -109,3 +109,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:29
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:29
+- Summary: Improved top navigation tab text contrast and replaced dual hero CTAs with a single Book an appointment button.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
