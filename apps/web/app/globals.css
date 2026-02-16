@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f3eb;
+  --surface: #fffdf8;
+  --foreground: #1f2f34;
+  --muted: #5f6c70;
+  --accent: #0f7f84;
+  --accent-soft: #d9f0ef;
+  --warm: #d77835;
+  --warm-soft: #ffe1c8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-warm: var(--warm);
+  --color-warm-soft: var(--warm-soft);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-space-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% -10%, #d3ebea 0%, transparent 44%),
+    radial-gradient(circle at 92% 2%, #ffe0c1 0%, transparent 42%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: #f5b982;
+  color: #102025;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes trust-pulse {
+  0%,
+  100% {
+    box-shadow: 0 12px 30px -18px rgba(15, 127, 132, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 18px 38px -16px rgba(15, 127, 132, 0.75);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 650ms ease both;
+}
+
+.animate-rise-delay-1 {
+  animation: rise-in 650ms ease 120ms both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise-in 650ms ease 220ms both;
+}
+
+.glass-card {
+  background: rgba(255, 253, 248, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.trust-banner {
+  animation: trust-pulse 3s ease-in-out infinite;
+}
