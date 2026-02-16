@@ -35,3 +35,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:05
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:05
+- Summary: Removed ClickSpark from the landing page per request and deleted the now-unused component file.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/ClickSpark.jsx (deleted)
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

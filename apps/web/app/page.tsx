@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import ClickSpark from "@/components/ClickSpark";
 
 type UseCase = "corporate" | "wedding" | "quick_dress";
 
@@ -183,39 +182,6 @@ export default function Home() {
               ))}
             </ul>
           </aside>
-        </section>
-
-        <section className="animate-rise-delay-2 mt-10">
-          <div className="rounded-3xl border border-black/12 bg-[#121225] p-3 shadow-sm sm:p-5">
-            <div
-              style={{
-                width: "100%",
-                maxWidth: "1080px",
-                height: "clamp(260px, 50vw, 460px)",
-                position: "relative",
-                margin: "0 auto",
-              }}
-            >
-              <ClickSpark
-                sparkColor="#ffffff"
-                sparkSize={15}
-                sparkRadius={14}
-                sparkCount={6}
-                duration={250}
-                easing="ease-out"
-                extraScale={1}
-              >
-                <div className="flex h-full w-full items-end rounded-2xl border border-white/15 bg-gradient-to-br from-[#1f1e3f] via-[#142037] to-[#103133] p-6">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/70">Click Preview</p>
-                    <p className="mt-2 font-display text-2xl tracking-tight text-white sm:text-3xl">
-                      Tap anywhere to trigger the ClickSpark effect.
-                    </p>
-                  </div>
-                </div>
-              </ClickSpark>
-            </div>
-          </div>
         </section>
 
         <section id="how-it-works" className="animate-rise-delay-2 mt-14">

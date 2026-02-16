@@ -53,3 +53,4 @@ Progress log
 - 2026-02-16: Replaced starter UI with interactive public landing page in `apps/web/app/page.tsx`, custom styling in `apps/web/app/globals.css`, updated metadata/fonts in `apps/web/app/layout.tsx`, and added coming-soon flow pages at `apps/web/app/get-measured/page.tsx` and `apps/web/app/group-order/page.tsx`.
 - 2026-02-16: Scoped back to landing-only first slice by restoring `/get-measured` to a coming-soon placeholder, keeping `/group-order` as placeholder, and preserving the interactive public landing page at `/` with use-case toggle and product sections.
 - 2026-02-16: Added a ClickSpark interaction preview to the landing page (`apps/web/app/page.tsx`) using a local React Bits component (`apps/web/components/ClickSpark.jsx`) with spark settings for visual click feedback.
+- 2026-02-16: Removed the ClickSpark preview section from the landing page and deleted the unused `apps/web/components/ClickSpark.jsx` component to keep the public site focused.
