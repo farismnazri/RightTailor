@@ -316,3 +316,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 20:33
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 20:33
+- Summary: Raised the landing ScrollStack pin target and removed remaining top stack padding so cards pin higher and reduce bottom content cutoff.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/ScrollStack.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

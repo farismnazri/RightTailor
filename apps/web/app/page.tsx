@@ -176,13 +176,13 @@ export default function Home() {
         </nav>
 
         <ScrollStack
-          className="mt-2"
+          className="mt-0"
           useWindowScroll
           itemDistance={170}
           itemScale={0.04}
           itemStackDistance={26}
-          stackPosition="18%"
-          scaleEndPosition="10%"
+          stackPosition="8%"
+          scaleEndPosition="5%"
           baseScale={0.9}
           blurAmount={2}
         >
