@@ -76,3 +76,4 @@ Progress log
 - 2026-02-16: Raised the ScrollStack start position by reducing top spacing so stacked cards align closer to the top/navigation.
 - 2026-02-16: Fixed low stacking by clamping initial downward translation in ScrollStack and retuning stack pin position higher so card 2 overlays card 1 earlier and closer to the top.
 - 2026-02-16: Moved the landing ScrollStack pin anchor further up (`stackPosition`/`scaleEndPosition`) and removed residual top spacing so stacked cards sit higher and avoid bottom cutoff on shorter viewports.
+- 2026-02-16: Added measurement history to `/get-measured` input flow with local-storage-backed previous sets listing, plus edit-in-place and delete actions for saved measurement sets.

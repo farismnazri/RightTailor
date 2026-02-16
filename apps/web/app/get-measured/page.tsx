@@ -19,6 +19,17 @@ type Notice = {
   message: string;
 } | null;
 
+type StoredMeasurementSet = {
+  id: string;
+  name: string;
+  imageUrl: string | null;
+  units: MeasurementUnit;
+  measurements: MeasurementValues;
+  createdAt: string;
+  updatedAt?: string;
+  source: string;
+};
+
 const APPOINTMENT_STORAGE_KEY = "righttailor_appointments_v1";
 const MEASUREMENT_STORAGE_KEY = "righttailor_measurement_sets_v1";
 
@@ -43,6 +54,68 @@ const countCompletedFields = (values: MeasurementValues): number => {
 
 const paxOptions = Array.from({ length: 10 }, (_, index) => String(index + 1));
 
+const normalizeMeasurementValues = (rawValues: unknown): MeasurementValues => {
+  const defaults = createEmptyMeasurementValues();
+  if (!rawValues || typeof rawValues !== "object") {
+    return defaults;
+  }
+
+  const source = rawValues as Record<string, unknown>;
+  for (const field of measurementFields) {
+    const rawValue = source[field.key];
+    if (typeof rawValue === "number") {
+      defaults[field.key] = String(rawValue);
+      continue;
+    }
+    if (typeof rawValue === "string") {
+      defaults[field.key] = rawValue;
+    }
+  }
+  return defaults;
+};
+
+const readStoredMeasurementSets = (): StoredMeasurementSet[] => {
+  const rawEntries = readStoredArray(MEASUREMENT_STORAGE_KEY);
+  const parsedEntries: StoredMeasurementSet[] = [];
+
+  for (const entry of rawEntries) {
+    if (!entry || typeof entry !== "object") {
+      continue;
+    }
+
+    const value = entry as Record<string, unknown>;
+    if (typeof value.id !== "string" || typeof value.name !== "string") {
+      continue;
+    }
+
+    const normalizedUnits: MeasurementUnit = value.units === "in" ? "in" : "cm";
+    parsedEntries.push({
+      id: value.id,
+      name: value.name.trim(),
+      imageUrl: typeof value.imageUrl === "string" && value.imageUrl.trim() ? value.imageUrl.trim() : null,
+      units: normalizedUnits,
+      measurements: normalizeMeasurementValues(value.measurements),
+      createdAt: typeof value.createdAt === "string" ? value.createdAt : new Date().toISOString(),
+      updatedAt: typeof value.updatedAt === "string" ? value.updatedAt : undefined,
+      source: typeof value.source === "string" ? value.source : "input_measurement_tab",
+    });
+  }
+
+  return parsedEntries;
+};
+
+const formatLocalDateTime = (value: string): string => {
+  const dateValue = new Date(value);
+  if (Number.isNaN(dateValue.getTime())) {
+    return "Unknown date";
+  }
+
+  return new Intl.DateTimeFormat("en-MY", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(dateValue);
+};
+
 export default function GetMeasuredPage() {
   const [activeTab, setActiveTab] = useState<TabId>("book_appointment");
 
@@ -55,9 +128,24 @@ export default function GetMeasuredPage() {
   const [measurementImageUrl, setMeasurementImageUrl] = useState("");
   const [measurementUnit, setMeasurementUnit] = useState<MeasurementUnit>("cm");
   const [measurementValues, setMeasurementValues] = useState<MeasurementValues>(createEmptyMeasurementValues());
+  const [measurementHistory, setMeasurementHistory] = useState<StoredMeasurementSet[]>(() => readStoredMeasurementSets());
+  const [editingMeasurementId, setEditingMeasurementId] = useState<string | null>(null);
   const [measurementNotice, setMeasurementNotice] = useState<Notice>(null);
 
   const completedCount = useMemo(() => countCompletedFields(measurementValues), [measurementValues]);
+
+  const resetMeasurementForm = (): void => {
+    setMeasurementSetName("");
+    setMeasurementImageUrl("");
+    setMeasurementUnit("cm");
+    setMeasurementValues(createEmptyMeasurementValues());
+    setEditingMeasurementId(null);
+  };
+
+  const persistMeasurementHistory = (nextHistory: StoredMeasurementSet[]): void => {
+    setMeasurementHistory(nextHistory);
+    window.localStorage.setItem(MEASUREMENT_STORAGE_KEY, JSON.stringify(nextHistory));
+  };
 
   const submitAppointment = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -116,27 +204,84 @@ export default function GetMeasuredPage() {
       return;
     }
 
-    const payload = {
-      id: crypto.randomUUID(),
+    const timestamp = new Date().toISOString();
+    const payloadBase = {
       name: normalizedSetName,
       imageUrl: measurementImageUrl.trim() || null,
       units: measurementUnit,
-      measurements: measurementValues,
-      createdAt: new Date().toISOString(),
+      measurements: { ...measurementValues },
       source: "input_measurement_tab",
     };
 
-    const existing = readStoredArray(MEASUREMENT_STORAGE_KEY);
-    window.localStorage.setItem(MEASUREMENT_STORAGE_KEY, JSON.stringify([payload, ...existing]));
+    if (editingMeasurementId) {
+      const existing = measurementHistory.find((entry) => entry.id === editingMeasurementId);
+      const updatedPayload: StoredMeasurementSet = {
+        id: editingMeasurementId,
+        createdAt: existing?.createdAt ?? timestamp,
+        updatedAt: timestamp,
+        ...payloadBase,
+      };
+
+      const nextHistory = measurementHistory.map((entry) => (entry.id === editingMeasurementId ? updatedPayload : entry));
+      persistMeasurementHistory(nextHistory);
+      setMeasurementNotice({
+        type: "success",
+        message: "Measurement set updated locally.",
+      });
+      resetMeasurementForm();
+      return;
+    }
+
+    const newPayload: StoredMeasurementSet = {
+      id: crypto.randomUUID(),
+      createdAt: timestamp,
+      ...payloadBase,
+    };
+
+    const nextHistory = [newPayload, ...measurementHistory];
+    persistMeasurementHistory(nextHistory);
+    setMeasurementNotice({
+      type: "success",
+      message: "Measurement set saved locally.",
+    });
+    resetMeasurementForm();
+  };
+
+  const startEditingMeasurementSet = (setToEdit: StoredMeasurementSet): void => {
+    setMeasurementSetName(setToEdit.name);
+    setMeasurementImageUrl(setToEdit.imageUrl ?? "");
+    setMeasurementUnit(setToEdit.units);
+    setMeasurementValues({
+      ...createEmptyMeasurementValues(),
+      ...setToEdit.measurements,
+    });
+    setEditingMeasurementId(setToEdit.id);
+    setMeasurementNotice(null);
+    setActiveTab("input_measurement");
+  };
+
+  const deleteMeasurementSet = (id: string): void => {
+    const target = measurementHistory.find((entry) => entry.id === id);
+    if (!target) {
+      return;
+    }
+
+    const shouldDelete = window.confirm(`Delete measurement set "${target.name}"?`);
+    if (!shouldDelete) {
+      return;
+    }
+
+    const nextHistory = measurementHistory.filter((entry) => entry.id !== id);
+    persistMeasurementHistory(nextHistory);
+
+    if (editingMeasurementId === id) {
+      resetMeasurementForm();
+    }
 
     setMeasurementNotice({
       type: "success",
-      message: "Measurement set saved locally. Backend database integration is next.",
+      message: `Deleted "${target.name}".`,
     });
-    setMeasurementSetName("");
-    setMeasurementImageUrl("");
-    setMeasurementUnit("cm");
-    setMeasurementValues(createEmptyMeasurementValues());
   };
 
   return (
@@ -318,7 +463,21 @@ export default function GetMeasuredPage() {
               ) : null}
               </form>
             ) : (
+              <>
               <form onSubmit={submitMeasurementSet}>
+                {editingMeasurementId ? (
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-accent/25 bg-accent-soft px-3 py-2.5">
+                    <p className="text-sm font-semibold text-foreground">Editing measurement set</p>
+                    <button
+                      type="button"
+                      onClick={resetMeasurementForm}
+                      className="rounded-full border border-black/15 bg-white px-3 py-1 text-xs font-semibold text-foreground transition hover:border-accent/45 hover:text-accent"
+                    >
+                      Cancel edit
+                    </button>
+                  </div>
+                ) : null}
+
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label className="text-sm font-semibold text-foreground" htmlFor="measurement-name">
@@ -409,7 +568,7 @@ export default function GetMeasuredPage() {
                   type="submit"
                   className="mt-6 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0b6a6e]"
                 >
-                  Save measurement set
+                  {editingMeasurementId ? "Update measurement set" : "Save measurement set"}
                 </button>
 
                 {measurementNotice ? (
@@ -422,6 +581,70 @@ export default function GetMeasuredPage() {
                   </p>
                 ) : null}
               </form>
+
+              <section className="mt-8">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="font-display text-2xl tracking-tight text-foreground">Previous measurement sets</h3>
+                  <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+                    {measurementHistory.length} saved
+                  </span>
+                </div>
+
+                {measurementHistory.length === 0 ? (
+                  <p className="mt-3 rounded-xl border border-dashed border-black/20 bg-white/70 px-4 py-3 text-sm text-muted">
+                    No saved sets yet. Create your first set above.
+                  </p>
+                ) : (
+                  <div className="mt-4 grid gap-3">
+                    {measurementHistory.map((savedSet) => {
+                      const savedCompletedCount = countCompletedFields(savedSet.measurements);
+                      const savedTimestamp = savedSet.updatedAt ?? savedSet.createdAt;
+                      const isEditing = editingMeasurementId === savedSet.id;
+
+                      return (
+                        <article
+                          key={savedSet.id}
+                          className={`rounded-xl border bg-white/78 px-4 py-3 transition ${
+                            isEditing ? "border-accent/45 ring-1 ring-accent/30" : "border-black/12"
+                          }`}
+                        >
+                          <div className="flex flex-wrap items-start justify-between gap-3">
+                            <div>
+                              <p className="font-display text-lg tracking-tight text-foreground">{savedSet.name}</p>
+                              <p className="mt-1 text-xs uppercase tracking-[0.12em] text-muted">
+                                {savedSet.units.toUpperCase()} • {savedCompletedCount}/{measurementFields.length} fields •{" "}
+                                {formatLocalDateTime(savedTimestamp)}
+                              </p>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <button
+                                type="button"
+                                onClick={() => startEditingMeasurementSet(savedSet)}
+                                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                                  isEditing
+                                    ? "border border-accent/35 bg-accent-soft text-accent"
+                                    : "border border-black/15 bg-white text-foreground hover:border-accent/45 hover:text-accent"
+                                }`}
+                              >
+                                {isEditing ? "Editing" : "Edit"}
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => deleteMeasurementSet(savedSet.id)}
+                                className="rounded-full border border-[#b3472f]/30 bg-[#fff4ef] px-3 py-1.5 text-xs font-semibold text-[#9a2f1a] transition hover:border-[#b3472f]/55 hover:bg-[#ffe8de]"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                )}
+              </section>
+              </>
             )}
           </div>
         </section>

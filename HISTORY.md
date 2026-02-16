@@ -328,3 +328,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 21:23
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 21:23
+- Summary: Enhanced `/get-measured` input flow to show previous measurement sets from local storage and added edit/update and delete actions for saved sets.
+- Files Changed:
+  - apps/web/app/get-measured/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
