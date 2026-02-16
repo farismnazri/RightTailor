@@ -357,7 +357,7 @@ const ScrollStack = ({
         willChange: "scroll-position",
       }}
     >
-      <div className="scroll-stack-inner min-h-screen px-0 pb-[36rem] pt-[8vh]">
+      <div className="scroll-stack-inner min-h-screen px-0 pb-[36rem] pt-2">
         {children}
         <div className="scroll-stack-end h-px w-full" />
       </div>

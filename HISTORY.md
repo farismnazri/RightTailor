@@ -292,3 +292,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 20:18
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 20:18
+- Summary: Adjusted ScrollStack vertical placement by reducing outer top margin and internal stack top padding so card stacking starts higher on the page.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/ScrollStack.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
