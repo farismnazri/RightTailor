@@ -62,3 +62,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:15
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:15
+- Summary: Updated the full-page Grainient props on the landing page to the requested dark blue color set and tuning values.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

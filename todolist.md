@@ -55,3 +55,4 @@ Progress log
 - 2026-02-16: Added a ClickSpark interaction preview to the landing page (`apps/web/app/page.tsx`) using a local React Bits component (`apps/web/components/ClickSpark.jsx`) with spark settings for visual click feedback.
 - 2026-02-16: Removed the ClickSpark preview section from the landing page and deleted the unused `apps/web/components/ClickSpark.jsx` component to keep the public site focused.
 - 2026-02-16: Added a full-page Grainient animated background to the landing page without a bordered demo card (`apps/web/components/Grainient.jsx`, `apps/web/components/Grainient.css`, `apps/web/app/page.tsx`) and installed `ogl` for rendering.
+- 2026-02-16: Updated Grainient landing background values to a darker blue/near-black palette with reduced grain and adjusted center/contrast/gamma tuning in `apps/web/app/page.tsx`.

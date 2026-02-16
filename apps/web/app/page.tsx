@@ -102,9 +102,9 @@ export default function Home() {
     <div className="relative isolate min-h-screen overflow-x-clip pb-16">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <Grainient
-          color1="#f9ff9e"
-          color2="#8bda9f"
-          color3="#ffb380"
+          color1="#1c5182"
+          color2="#002757"
+          color3="#04060c"
           timeSpeed={0.55}
           colorBalance={-0.2}
           warpStrength={4}
@@ -114,15 +114,15 @@ export default function Home() {
           blendAngle={0}
           blendSoftness={0.05}
           rotationAmount={500}
-          noiseScale={2}
-          grainAmount={0.1}
+          noiseScale={1.25}
+          grainAmount={0}
           grainScale={2}
           grainAnimated={false}
-          contrast={1.5}
-          gamma={1}
+          contrast={1.05}
+          gamma={1.3}
           saturation={1}
-          centerX={0}
-          centerY={0}
+          centerX={0.25}
+          centerY={-0.21}
           zoom={0.9}
         />
       </div>
