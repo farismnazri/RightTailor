@@ -204,3 +204,18 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 19:00
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 19:00
+- Summary: Reverted landing section stack animation and rebuilt section content as fixed large beige cards to match the requested visual style; switched main nav logo to white webp and removed now-unused ScrollStack/lenis.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/public/righttailor-logo-white.webp
+  - apps/web/components/ScrollStack.tsx
+  - apps/web/package.json
+  - pnpm-lock.yaml
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

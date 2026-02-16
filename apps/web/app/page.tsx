@@ -5,7 +5,6 @@ import { useState } from "react";
 import CardNav, { type CardNavItem } from "@/components/CardNav";
 import Grainient from "@/components/Grainient";
 import Silk from "@/components/Silk";
-import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 
 type UseCase = "corporate" | "wedding" | "quick_dress";
 
@@ -172,7 +171,7 @@ export default function Home() {
 
       <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-8 sm:px-10 lg:px-12">
         <nav className="animate-rise relative z-[120]">
-          <CardNav items={topNavItems} logoSrc="/righttailor-logo.png" ctaHref="/get-measured" />
+          <CardNav items={topNavItems} logoSrc="/righttailor-logo-white.webp" ctaHref="/get-measured" />
         </nav>
 
         <section className="glass-card mt-10 grid gap-8 rounded-3xl border border-black/5 px-6 py-8 shadow-sm sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
@@ -233,93 +232,120 @@ export default function Home() {
           </aside>
         </section>
 
-        <section id="how-it-works" className="animate-rise-delay-2 mt-14">
-          <h2 className="font-display text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-4xl">
-            How it works
-          </h2>
-          <p className="mt-3 max-w-3xl text-white/88 drop-shadow-[0_3px_10px_rgba(0,0,0,0.72)]">
-            A practical flow for self profiles, children profiles, and tailor delegation before ordering suits, wedding
-            outfits, or dresses.
-          </p>
-          <ScrollStack className="mt-2" useWindowScroll itemDistance={74} itemStackDistance={24} baseScale={0.9}>
-            {howItWorks.map((step, index) => (
-              <ScrollStackItem
-                key={step.title}
-                itemClassName="min-h-[210px] border border-black/7 bg-white/80 transition duration-300 hover:border-accent/35 hover:bg-white"
-              >
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-warm-soft text-sm font-semibold text-warm">
-                  {index + 1}
-                </span>
-                <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-foreground">{step.title}</h3>
-                <p className="mt-2 text-base leading-relaxed text-muted">{step.description}</p>
-              </ScrollStackItem>
-            ))}
-          </ScrollStack>
-        </section>
-
-        <section id="group-orders" className="mt-14">
-          <h2 className="font-display text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-4xl">
-            Group orders without group confusion
-          </h2>
-          <p className="mt-3 max-w-3xl text-white/88 drop-shadow-[0_3px_10px_rgba(0,0,0,0.72)]">
-            For wedding parties and corporate batches, define one shared fabric, cut, and color while each participant
-            keeps individual measurements.
-          </p>
-          <ScrollStack className="mt-2" useWindowScroll itemDistance={68} itemStackDistance={22} baseScale={0.91}>
-            {groupCards.map((card) => {
-              const isHighlighted = card.id === selectedUseCase;
-              return (
-                <ScrollStackItem
-                  key={card.id}
-                  itemClassName={`min-h-[210px] border transition duration-300 ${
-                    isHighlighted
-                      ? "border-accent bg-accent-soft/65 shadow-sm"
-                      : "border-black/7 bg-white/80 hover:border-accent/30 hover:bg-white"
-                  }`}
-                >
-                  <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground">{card.title}</h3>
-                  <p className="mt-2 text-base leading-relaxed text-muted">{card.description}</p>
-                  {isHighlighted ? (
-                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-accent">Active scenario</p>
-                  ) : null}
-                </ScrollStackItem>
-              );
-            })}
-          </ScrollStack>
-        </section>
-
-        <section id="size-matching" className="mt-14">
-          <div className="rounded-3xl border border-black/8 bg-[#fff9f0] p-6 sm:p-8">
-            <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Size matching that starts from your profile</h2>
-            <p className="mt-3 max-w-3xl text-muted">
-              We will map profile measurements to curated brand charts and suggest S, M, L, or numeric sizes. No
-              scraping, no guessing, and no feature build in this slice yet.
+        <section id="how-it-works" className="mt-12">
+          <div className="rounded-[2.3rem] border border-white/35 bg-[#f1ede4] px-6 py-8 sm:px-9 sm:py-10">
+            <h2 className="font-display text-4xl tracking-tight text-foreground sm:text-[4.1rem]">How it works</h2>
+            <p className="mt-4 max-w-5xl text-[1.2rem] leading-relaxed text-muted sm:text-[2rem]">
+              A practical flow for self profiles, children profiles, and tailor delegation before ordering suits, wedding
+              outfits, or dresses.
             </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-xl border border-black/8 bg-white p-4">
-                <p className="text-sm font-semibold text-foreground">1. Pick chart</p>
-                <p className="mt-1 text-sm text-muted">Choose a curated chart by brand, region, and garment type.</p>
-              </div>
-              <div className="rounded-xl border border-black/8 bg-white p-4">
-                <p className="text-sm font-semibold text-foreground">2. Compare ranges</p>
-                <p className="mt-1 text-sm text-muted">Measurement ranges are compared to your active profile set.</p>
-              </div>
-              <div className="rounded-xl border border-black/8 bg-white p-4">
-                <p className="text-sm font-semibold text-foreground">3. Recommend size</p>
-                <p className="mt-1 text-sm text-muted">Show the closest size label with confidence notes.</p>
-              </div>
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              {howItWorks.map((step, index) => (
+                <article key={step.title} className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                  <h3 className="font-display text-[2.4rem] font-medium tracking-tight text-foreground sm:text-[3.25rem]">
+                    {index + 1}
+                  </h3>
+                  <p className="mt-3 font-display text-[1.9rem] leading-tight tracking-tight text-foreground sm:text-[2.35rem]">
+                    {step.title}
+                  </p>
+                  <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">{step.description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="mt-12">
-          <div className="trust-banner rounded-2xl border border-accent/25 bg-accent px-6 py-6 text-white">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/85">Privacy promise</p>
-            <p className="mt-2 font-display text-2xl leading-tight">Admin and support cannot view measurement values.</p>
-            <p className="mt-2 max-w-3xl text-sm text-white/85">
-              Backend enforcement is planned with strict row-level policies so sensitive measurement payloads stay out
-              of operator tooling.
+        <section id="group-orders" className="mt-10">
+          <div className="rounded-[2.3rem] border border-white/35 bg-[#f1ede4] px-6 py-8 sm:px-9 sm:py-10">
+            <h2 className="font-display text-4xl tracking-tight text-foreground sm:text-[4.1rem]">
+              Group orders without group confusion
+            </h2>
+            <p className="mt-4 max-w-5xl text-[1.2rem] leading-relaxed text-muted sm:text-[2rem]">
+              For wedding parties and corporate batches, define one shared fabric, cut, and color while each participant
+              keeps individual measurements.
             </p>
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              {groupCards.map((card, index) => (
+                <article key={card.id} className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                  <p className="font-display text-[1.9rem] leading-tight tracking-tight text-foreground sm:text-[2.35rem]">
+                    {index + 1}. {card.title}
+                  </p>
+                  <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">{card.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="size-matching" className="mt-10">
+          <div className="rounded-[2.3rem] border border-white/35 bg-[#f1ede4] px-6 py-8 sm:px-9 sm:py-10">
+            <h2 className="font-display text-4xl tracking-tight text-foreground sm:text-[4.1rem]">
+              Size matching that starts from your profile
+            </h2>
+            <p className="mt-4 max-w-5xl text-[1.2rem] leading-relaxed text-muted sm:text-[2rem]">
+              We will map profile measurements to curated brand charts and suggest S, M, L, or numeric sizes. No scraping,
+              no guessing, and no feature build in this slice yet.
+            </p>
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              <article className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                <p className="font-display text-[1.9rem] tracking-tight text-foreground sm:text-[2.35rem]">1. Pick chart</p>
+                <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">
+                  Choose a curated chart by brand, region, and garment type.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                <p className="font-display text-[1.9rem] tracking-tight text-foreground sm:text-[2.35rem]">
+                  2. Compare ranges
+                </p>
+                <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">
+                  Measurement ranges are compared to your active profile set.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                <p className="font-display text-[1.9rem] tracking-tight text-foreground sm:text-[2.35rem]">
+                  3. Recommend size
+                </p>
+                <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">
+                  Show the closest size label with confidence notes.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-10">
+          <div className="rounded-[2.3rem] border border-white/35 bg-[#f1ede4] px-6 py-8 sm:px-9 sm:py-10">
+            <h2 className="font-display text-4xl tracking-tight text-foreground sm:text-[4.1rem]">Privacy promise</h2>
+            <p className="mt-4 max-w-5xl text-[1.2rem] leading-relaxed text-muted sm:text-[2rem]">
+              Admin and support cannot view measurement values. Backend enforcement is planned with strict row-level
+              policies so sensitive measurement payloads stay out of operator tooling.
+            </p>
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              <article className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                <p className="font-display text-[1.9rem] tracking-tight text-foreground sm:text-[2.35rem]">
+                  1. No operator visibility
+                </p>
+                <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">
+                  Admin and support tools are designed without measurement value access.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                <p className="font-display text-[1.9rem] tracking-tight text-foreground sm:text-[2.35rem]">
+                  2. RLS-first backend
+                </p>
+                <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">
+                  Row-level policies are the enforcement boundary for measurement privacy.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-black/8 bg-[#ececee] p-5 sm:p-6">
+                <p className="font-display text-[1.9rem] tracking-tight text-foreground sm:text-[2.35rem]">
+                  3. No value logging
+                </p>
+                <p className="mt-3 text-[1.15rem] leading-relaxed text-muted sm:text-[1.85rem]">
+                  Measurement payloads are excluded from logs and analytics events.
+                </p>
+              </article>
+            </div>
           </div>
         </section>
       </main>
