@@ -69,3 +69,4 @@ Progress log
 - 2026-02-16: Added `ScrollStack` card behavior to landing sections so `How it works` and `Group orders` cards now animate/stack during page scroll with smooth transitions.
 - 2026-02-16: Reverted landing ScrollStack behavior back to fixed large section cards and restyled `How it works`, `Group orders`, `Size matching`, and `Privacy promise` to match the screenshot-like beige card system; switched nav logo to white webp asset.
 - 2026-02-16: Toned down landing page typography scale on the large content cards for better readability while keeping the same card layout and structure.
+- 2026-02-16: Reintroduced `ScrollStack` behavior for the landing page’s four large section cards so they stack and animate during scroll while preserving existing card content.

@@ -230,3 +230,17 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 19:13
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 19:13
+- Summary: Added a reusable `ScrollStack` component (Lenis-based) and applied it to the four large landing page section cards (`How it works`, `Group orders`, `Size matching`, `Privacy promise`) for stacked scroll motion.
+- Files Changed:
+  - apps/web/components/ScrollStack.tsx
+  - apps/web/app/page.tsx
+  - apps/web/package.json
+  - pnpm-lock.yaml
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
