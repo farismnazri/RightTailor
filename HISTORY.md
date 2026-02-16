@@ -244,3 +244,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 19:21
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 19:21
+- Summary: Updated landing ScrollStack behavior so the hero is the first stacked card, following section cards stack over it, and background cards blur more visibly while pinning closer to center.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

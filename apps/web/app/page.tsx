@@ -175,65 +175,77 @@ export default function Home() {
           <CardNav items={topNavItems} logoSrc="/righttailor-logo-white.webp" ctaHref="/get-measured" />
         </nav>
 
-        <section className="glass-card mt-10 grid gap-8 rounded-3xl border border-black/5 px-6 py-8 shadow-sm sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
-          <div className="animate-rise-delay-1 space-y-6">
-            <span className="inline-flex rounded-full bg-accent-soft px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-              Measurement-first tailoring
-            </span>
-            <h1 className="font-display text-4xl leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Store measurements once, order anything later.
-            </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-              Build reusable profiles, let a trusted tailor enter measurements, and place solo or group orders without
-              repeating the setup each time.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/get-measured"
-                className="rounded-full bg-accent px-6 py-3 text-sm font-semibold !text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#0b6a6e] hover:!text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                Book an appointment
-              </Link>
-            </div>
-          </div>
-
-          <aside className="animate-rise-delay-2 rounded-2xl border border-accent/20 bg-white/80 p-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Select use case</p>
-            <div className="mt-4 grid grid-cols-3 gap-2">
-              {useCaseOptions.map((option) => {
-                const isActive = selectedUseCase === option.id;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => setSelectedUseCase(option.id)}
-                    className={`rounded-lg border px-3 py-2 text-sm font-semibold transition ${
-                      isActive
-                        ? "border-accent bg-accent text-white"
-                        : "border-black/10 bg-white text-muted hover:border-accent/35 hover:text-accent"
-                    }`}
+        <ScrollStack
+          className="mt-8"
+          useWindowScroll
+          itemDistance={170}
+          itemScale={0.04}
+          itemStackDistance={26}
+          stackPosition="24%"
+          scaleEndPosition="12%"
+          baseScale={0.9}
+          blurAmount={1.4}
+        >
+          <ScrollStackItem itemClassName="my-0 h-auto min-h-0 rounded-none bg-transparent p-0 shadow-none">
+            <section className="glass-card grid gap-8 rounded-3xl border border-black/5 px-6 py-8 shadow-sm sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
+              <div className="space-y-6">
+                <span className="inline-flex rounded-full bg-accent-soft px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                  Measurement-first tailoring
+                </span>
+                <h1 className="font-display text-4xl leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                  Store measurements once, order anything later.
+                </h1>
+                <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+                  Build reusable profiles, let a trusted tailor enter measurements, and place solo or group orders without
+                  repeating the setup each time.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/get-measured"
+                    className="rounded-full bg-accent px-6 py-3 text-sm font-semibold !text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#0b6a6e] hover:!text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
-                    {option.label}
-                  </button>
-                );
-              })}
-            </div>
-            <div className="mt-5 rounded-xl bg-accent-soft/70 p-4">
-              <p className="font-display text-lg font-semibold text-foreground">{activeUseCase.panelTitle}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{activeUseCase.panelBody}</p>
-            </div>
-            <ul className="mt-4 space-y-2 text-sm text-muted">
-              {activeUseCase.points.map((point) => (
-                <li key={point} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-warm" aria-hidden />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </section>
+                    Book an appointment
+                  </Link>
+                </div>
+              </div>
 
-        <ScrollStack className="mt-10" useWindowScroll itemDistance={120} itemScale={0.03} itemStackDistance={30}>
+              <aside className="rounded-2xl border border-accent/20 bg-white/80 p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Select use case</p>
+                <div className="mt-4 grid grid-cols-3 gap-2">
+                  {useCaseOptions.map((option) => {
+                    const isActive = selectedUseCase === option.id;
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        onClick={() => setSelectedUseCase(option.id)}
+                        className={`rounded-lg border px-3 py-2 text-sm font-semibold transition ${
+                          isActive
+                            ? "border-accent bg-accent text-white"
+                            : "border-black/10 bg-white text-muted hover:border-accent/35 hover:text-accent"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="mt-5 rounded-xl bg-accent-soft/70 p-4">
+                  <p className="font-display text-lg font-semibold text-foreground">{activeUseCase.panelTitle}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{activeUseCase.panelBody}</p>
+                </div>
+                <ul className="mt-4 space-y-2 text-sm text-muted">
+                  {activeUseCase.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-2 w-2 rounded-full bg-warm" aria-hidden />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            </section>
+          </ScrollStackItem>
+
           <ScrollStackItem itemClassName="my-0 h-auto min-h-0 rounded-none bg-transparent p-0 shadow-none">
             <section id="how-it-works" className="rounded-[2.3rem] border border-white/35 bg-[#f1ede4] px-6 py-8 sm:px-9 sm:py-10">
               <h2 className="font-display text-4xl tracking-tight text-foreground sm:text-[3.35rem]">How it works</h2>
