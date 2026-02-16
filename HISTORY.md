@@ -219,3 +219,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 19:05
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 19:05
+- Summary: Reduced the typography scale across landing page section cards (`How it works`, `Group orders`, `Size matching`, `Privacy promise`) to tone down visual weight while preserving the screenshot-matching card layout.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
