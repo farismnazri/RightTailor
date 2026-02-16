@@ -143,3 +143,14 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 17:05
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 17:05
+- Summary: Fixed `/get-measured` layout spacing and hierarchy by turning Back to home into a contained button and making the two-flow tab switcher prominent above the form content.
+- Files Changed:
+  - apps/web/app/get-measured/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

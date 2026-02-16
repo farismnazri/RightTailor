@@ -178,12 +178,18 @@ export default function GetMeasuredPage() {
         <div className="absolute -right-24 bottom-[-100px] h-[360px] w-[360px] rounded-full bg-[#031e45]/55 blur-3xl" />
       </div>
 
-      <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-8 sm:px-10 lg:px-12">
-        <Link href="/" className="text-sm font-semibold text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)]">
-          Back to home
-        </Link>
+      <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-12 sm:px-10 sm:pt-14 lg:px-12">
+        <div className="inline-flex w-fit rounded-2xl border border-white/25 bg-[#0a1936]/45 p-1.5 shadow-[0_12px_28px_-20px_rgba(0,0,0,0.85)] backdrop-blur">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.8)] transition hover:bg-white/10"
+          >
+            <span aria-hidden>←</span>
+            <span>Back to home</span>
+          </Link>
+        </div>
 
-        <header className="mt-5">
+        <header className="mt-6">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/90 drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)]">
             Measurement workspace
           </p>
@@ -197,33 +203,42 @@ export default function GetMeasuredPage() {
         </header>
 
         <section className="glass-card mt-8 rounded-3xl border border-white/15 p-5 shadow-sm sm:p-8">
-          <div className="inline-flex rounded-2xl border border-black/10 bg-white/70 p-1">
-            <button
-              type="button"
-              onClick={() => setActiveTab("book_appointment")}
-              className={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
-                activeTab === "book_appointment"
-                  ? "bg-accent text-white"
-                  : "text-foreground/70 hover:bg-white hover:text-foreground"
-              }`}
-            >
-              Book appointment
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab("input_measurement")}
-              className={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
-                activeTab === "input_measurement"
-                  ? "bg-accent text-white"
-                  : "text-foreground/70 hover:bg-white hover:text-foreground"
-              }`}
-            >
-              Input measurement
-            </button>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">Choose your flow</p>
+              <h2 className="mt-1 font-display text-2xl tracking-tight text-foreground sm:text-3xl">
+                Book appointment or input measurement
+              </h2>
+            </div>
+            <div className="inline-flex rounded-2xl border border-black/10 bg-white/70 p-1">
+              <button
+                type="button"
+                onClick={() => setActiveTab("book_appointment")}
+                className={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
+                  activeTab === "book_appointment"
+                    ? "bg-accent text-white"
+                    : "text-foreground/70 hover:bg-white hover:text-foreground"
+                }`}
+              >
+                Book appointment
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("input_measurement")}
+                className={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
+                  activeTab === "input_measurement"
+                    ? "bg-accent text-white"
+                    : "text-foreground/70 hover:bg-white hover:text-foreground"
+                }`}
+              >
+                Input measurement
+              </button>
+            </div>
           </div>
 
-          {activeTab === "book_appointment" ? (
-            <form className="mt-6 max-w-xl space-y-4" onSubmit={submitAppointment}>
+          <div className="mt-6 rounded-2xl border border-black/10 bg-white/72 p-4 sm:p-6">
+            {activeTab === "book_appointment" ? (
+              <form className="max-w-xl space-y-4" onSubmit={submitAppointment}>
               <div>
                 <label className="text-sm font-semibold text-foreground" htmlFor="appointment-name">
                   Name
@@ -301,113 +316,114 @@ export default function GetMeasuredPage() {
                   {appointmentNotice.message}
                 </p>
               ) : null}
-            </form>
-          ) : (
-            <form className="mt-6" onSubmit={submitMeasurementSet}>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="text-sm font-semibold text-foreground" htmlFor="measurement-name">
-                    Measurement set name
-                  </label>
-                  <input
-                    id="measurement-name"
-                    type="text"
-                    value={measurementSetName}
-                    onChange={(event) => {
-                      setMeasurementSetName(event.target.value);
-                      if (measurementNotice) {
-                        setMeasurementNotice(null);
-                      }
-                    }}
-                    className="mt-1 w-full rounded-xl border border-black/12 bg-white/90 px-4 py-2.5 text-sm text-foreground outline-none transition focus:border-accent"
-                    placeholder="Example: Faris - Suit v1"
-                  />
+              </form>
+            ) : (
+              <form onSubmit={submitMeasurementSet}>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className="text-sm font-semibold text-foreground" htmlFor="measurement-name">
+                      Measurement set name
+                    </label>
+                    <input
+                      id="measurement-name"
+                      type="text"
+                      value={measurementSetName}
+                      onChange={(event) => {
+                        setMeasurementSetName(event.target.value);
+                        if (measurementNotice) {
+                          setMeasurementNotice(null);
+                        }
+                      }}
+                      className="mt-1 w-full rounded-xl border border-black/12 bg-white/90 px-4 py-2.5 text-sm text-foreground outline-none transition focus:border-accent"
+                      placeholder="Example: Faris - Suit v1"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-semibold text-foreground" htmlFor="measurement-image-url">
+                      Image URL (optional)
+                    </label>
+                    <input
+                      id="measurement-image-url"
+                      type="url"
+                      value={measurementImageUrl}
+                      onChange={(event) => setMeasurementImageUrl(event.target.value)}
+                      className="mt-1 w-full rounded-xl border border-black/12 bg-white/90 px-4 py-2.5 text-sm text-foreground outline-none transition focus:border-accent"
+                      placeholder="https://..."
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="text-sm font-semibold text-foreground" htmlFor="measurement-image-url">
-                    Image URL (optional)
-                  </label>
-                  <input
-                    id="measurement-image-url"
-                    type="url"
-                    value={measurementImageUrl}
-                    onChange={(event) => setMeasurementImageUrl(event.target.value)}
-                    className="mt-1 w-full rounded-xl border border-black/12 bg-white/90 px-4 py-2.5 text-sm text-foreground outline-none transition focus:border-accent"
-                    placeholder="https://..."
-                  />
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <span className="text-sm font-semibold text-foreground">Units:</span>
+                  <button
+                    type="button"
+                    onClick={() => setMeasurementUnit("cm")}
+                    className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+                      measurementUnit === "cm"
+                        ? "bg-accent text-white"
+                        : "border border-black/15 bg-white text-foreground hover:border-accent/45"
+                    }`}
+                  >
+                    Metric (cm)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMeasurementUnit("in")}
+                    className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+                      measurementUnit === "in"
+                        ? "bg-accent text-white"
+                        : "border border-black/15 bg-white text-foreground hover:border-accent/45"
+                    }`}
+                  >
+                    Imperial (inch)
+                  </button>
+                  <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
+                    {completedCount}/{measurementFields.length} completed
+                  </span>
                 </div>
-              </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <span className="text-sm font-semibold text-foreground">Units:</span>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {measurementFields.map((field) => (
+                    <label key={field.key} className="rounded-xl border border-black/10 bg-white/85 px-3 py-2.5">
+                      <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">{field.label}</span>
+                      <div className="mt-1.5 flex items-center rounded-lg border border-black/12 bg-white px-3 py-1.5">
+                        <input
+                          type="number"
+                          min="0"
+                          step={field.kind === "angle" ? "0.5" : "0.1"}
+                          value={measurementValues[field.key]}
+                          onChange={(event) => updateMeasurementField(field.key, event.target.value)}
+                          placeholder="0"
+                          className="w-full bg-transparent text-sm text-foreground outline-none"
+                        />
+                        <span className="text-xs font-semibold uppercase text-muted">
+                          {field.kind === "angle" ? "°" : measurementUnit}
+                        </span>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+
                 <button
-                  type="button"
-                  onClick={() => setMeasurementUnit("cm")}
-                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
-                    measurementUnit === "cm"
-                      ? "bg-accent text-white"
-                      : "border border-black/15 bg-white text-foreground hover:border-accent/45"
-                  }`}
+                  type="submit"
+                  className="mt-6 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0b6a6e]"
                 >
-                  Metric (cm)
+                  Save measurement set
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setMeasurementUnit("in")}
-                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
-                    measurementUnit === "in"
-                      ? "bg-accent text-white"
-                      : "border border-black/15 bg-white text-foreground hover:border-accent/45"
-                  }`}
-                >
-                  Imperial (inch)
-                </button>
-                <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
-                  {completedCount}/{measurementFields.length} completed
-                </span>
-              </div>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {measurementFields.map((field) => (
-                  <label key={field.key} className="rounded-xl border border-black/10 bg-white/85 px-3 py-2.5">
-                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">{field.label}</span>
-                    <div className="mt-1.5 flex items-center rounded-lg border border-black/12 bg-white px-3 py-1.5">
-                      <input
-                        type="number"
-                        min="0"
-                        step={field.kind === "angle" ? "0.5" : "0.1"}
-                        value={measurementValues[field.key]}
-                        onChange={(event) => updateMeasurementField(field.key, event.target.value)}
-                        placeholder="0"
-                        className="w-full bg-transparent text-sm text-foreground outline-none"
-                      />
-                      <span className="text-xs font-semibold uppercase text-muted">
-                        {field.kind === "angle" ? "°" : measurementUnit}
-                      </span>
-                    </div>
-                  </label>
-                ))}
-              </div>
-
-              <button
-                type="submit"
-                className="mt-6 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0b6a6e]"
-              >
-                Save measurement set
-              </button>
-
-              {measurementNotice ? (
-                <p
-                  className={`mt-4 text-sm font-medium ${
-                    measurementNotice.type === "success" ? "text-[#0f7f84]" : "text-[#a83c1f]"
-                  }`}
-                >
-                  {measurementNotice.message}
-                </p>
-              ) : null}
-            </form>
-          )}
+                {measurementNotice ? (
+                  <p
+                    className={`mt-4 text-sm font-medium ${
+                      measurementNotice.type === "success" ? "text-[#0f7f84]" : "text-[#a83c1f]"
+                    }`}
+                  >
+                    {measurementNotice.message}
+                  </p>
+                ) : null}
+              </form>
+            )}
+          </div>
         </section>
       </main>
     </div>
