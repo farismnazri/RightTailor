@@ -181,10 +181,10 @@ export default function Home() {
           itemDistance={170}
           itemScale={0.04}
           itemStackDistance={26}
-          stackPosition="24%"
-          scaleEndPosition="12%"
+          stackPosition="34%"
+          scaleEndPosition="18%"
           baseScale={0.9}
-          blurAmount={1.4}
+          blurAmount={2}
         >
           <ScrollStackItem itemClassName="my-0 h-auto min-h-0 rounded-none bg-transparent p-0 shadow-none">
             <section className="glass-card grid gap-8 rounded-3xl border border-black/5 px-6 py-8 shadow-sm sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
