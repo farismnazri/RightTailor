@@ -35,10 +35,7 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(circle at 8% -10%, #d3ebea 0%, transparent 44%),
-    radial-gradient(circle at 92% 2%, #ffe0c1 0%, transparent 42%),
-    var(--background);
+  background-color: #020611;
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
 }

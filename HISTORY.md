@@ -154,3 +154,28 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 18:09
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 18:09
+- Summary: Fixed old background bleed at page bottoms by switching the global body fallback to dark and applying the layered dark backdrop pattern consistently across landing, get-measured, and group-order routes.
+- Files Changed:
+  - apps/web/app/globals.css
+  - apps/web/app/page.tsx
+  - apps/web/app/get-measured/page.tsx
+  - apps/web/app/group-order/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
+
+## 2026-02-16 18:23
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 18:23
+- Summary: Added a top-right desktop `Get started` navigation button on the landing page and wired it to `/get-measured`, matching the hero booking CTA flow.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

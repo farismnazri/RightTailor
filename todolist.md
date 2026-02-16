@@ -63,3 +63,5 @@ Progress log
 - 2026-02-16: Enforced pure white top nav tab text (including hover state) and pure white `Book an appointment` button text in `apps/web/app/page.tsx`.
 - 2026-02-16: Rebuilt `/get-measured` with two tabs (`Book appointment`, `Input measurement`), matching layered dark background, local-save booking form (name/email/pax), and full measurement set entry (name, optional image URL, units toggle, and PDF-based measurement fields) via `apps/web/app/get-measured/page.tsx` and `apps/web/app/get-measured/measurement-fields.ts`.
 - 2026-02-16: Polished `/get-measured` layout with a padded, shaped `Back to home` button and a clearer two-tab switcher (`Book appointment` / `Input measurement`) so both flows are immediately visible.
+- 2026-02-16: Removed old background bleed by setting a global dark fallback and applied the same layered dark backdrop system to `/`, `/get-measured`, and `/group-order` for consistent full-page coverage.
+- 2026-02-16: Added a top-right desktop nav `Get started` CTA on the landing page that routes to `/get-measured`, matching the `Book an appointment` action.

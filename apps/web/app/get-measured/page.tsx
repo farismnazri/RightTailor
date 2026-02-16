@@ -140,7 +140,7 @@ export default function GetMeasuredPage() {
   };
 
   return (
-    <div className="relative isolate min-h-screen overflow-x-clip pb-16">
+    <div className="relative isolate min-h-[100dvh] bg-[#020611] overflow-x-clip pb-16">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
         <Silk speed={5} scale={1} color="#7B7481" noiseIntensity={0} rotation={0} />
       </div>
@@ -179,7 +179,7 @@ export default function GetMeasuredPage() {
       </div>
 
       <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-12 sm:px-10 sm:pt-14 lg:px-12">
-        <div className="inline-flex w-fit rounded-2xl border border-white/25 bg-[#0a1936]/45 p-1.5 shadow-[0_12px_28px_-20px_rgba(0,0,0,0.85)] backdrop-blur">
+        <div className="inline-flex w-fit rounded-2xl border border-white/25 bg-[#ffffff]/100 p-1.5 shadow-[0_12px_28px_-20px_rgba(0,0,0,0.85)] backdrop-blur">
           <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.8)] transition hover:bg-white/10"

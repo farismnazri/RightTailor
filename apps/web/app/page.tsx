@@ -100,7 +100,7 @@ export default function Home() {
   const activeUseCase = useCaseDetails[selectedUseCase];
 
   return (
-    <div className="relative isolate min-h-screen overflow-x-clip pb-16">
+    <div className="relative isolate min-h-[100dvh] bg-[#020611] overflow-x-clip pb-16">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
         <Silk speed={5} scale={1} color="#7B7481" noiseIntensity={0} rotation={0} />
       </div>
@@ -143,25 +143,33 @@ export default function Home() {
           <p className="font-display text-xl font-semibold tracking-tight text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)]">
             RightTailor
           </p>
-          <div className="hidden gap-6 text-sm font-semibold md:flex">
-            <a
-              className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
-              href="#how-it-works"
+          <div className="hidden items-center gap-3 text-sm font-semibold md:flex">
+            <div className="flex items-center gap-6">
+              <a
+                className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
+                href="#how-it-works"
+              >
+                How it works
+              </a>
+              <a
+                className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
+                href="#group-orders"
+              >
+                Group orders
+              </a>
+              <a
+                className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
+                href="#size-matching"
+              >
+                Size matching
+              </a>
+            </div>
+            <Link
+              href="/get-measured"
+              className="rounded-full border border-white/35 bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.11em] !text-white shadow-[0_10px_24px_-16px_rgba(0,0,0,0.85)] transition hover:-translate-y-0.5 hover:bg-white/20"
             >
-              How it works
-            </a>
-            <a
-              className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
-              href="#group-orders"
-            >
-              Group orders
-            </a>
-            <a
-              className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
-              href="#size-matching"
-            >
-              Size matching
-            </a>
+              Get started
+            </Link>
           </div>
         </nav>
 
