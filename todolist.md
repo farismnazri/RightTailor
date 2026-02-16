@@ -7,13 +7,13 @@ Legend
 P0 — Repo + foundation
 - [x] Initialize monorepo (pnpm) with apps/web (Next.js + TS + Tailwind; shadcn/ui deferred to next slice)
 - [ ] Add Supabase local dev setup (supabase/ folder, config, scripts)
-- [ ] Add environment variable templates (.env.example) with placeholders
+- [x] Add environment variable templates (.env.example) with placeholders
 - [ ] Add base routing: /login, /profiles, /profiles/[id], /orders/new, /groups, /groups/[id]
 - [x] Add UI shell: nav, layout, responsive baseline
 - [x] Ship public landing page at / with placeholder flows at /get-measured and /group-order
 
 P1 — Auth + profiles
-- [ ] Google OAuth sign-in (Supabase Auth)
+- [x] Google OAuth sign-in (Supabase Auth)
   Acceptance: user can sign in/out; session persists; routes guarded
 - [ ] Profiles CRUD (owner-only)
   Acceptance: create/list/edit profiles; RLS blocks other users
@@ -71,3 +71,4 @@ Progress log
 - 2026-02-16: Toned down landing page typography scale on the large content cards for better readability while keeping the same card layout and structure.
 - 2026-02-16: Reintroduced `ScrollStack` behavior for the landing page’s four large section cards so they stack and animate during scroll while preserving existing card content.
 - 2026-02-16: Tuned landing ScrollStack to start from the hero card and stack subsequent large cards over it with stronger center-pin feel and blur for cards behind.
+- 2026-02-16: Wired Supabase Auth (Google) using `@supabase/ssr` with cookie-based SSR session handling, added `/auth/callback` code exchange route, created `/login` plus protected placeholder routes (`/app`, `/profiles`), and integrated nav `Sign in`/`Sign out` with a signed-in user indicator.

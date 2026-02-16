@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import AuthNavControl from "@/components/AuthNavControl";
 
 type CardNavLink = {
   label: string;
@@ -99,12 +100,15 @@ export default function CardNav({
             <Image src={logoSrc} alt={logoAlt} width={260} height={52} priority className="h-8 w-auto object-contain" />
           </Link>
 
-          <Link
-            href={ctaHref}
-            className="relative z-10 inline-flex h-12 shrink-0 items-center rounded-xl border border-white/32 bg-white/[0.08] px-4 text-xs font-semibold uppercase tracking-[0.11em] !text-white transition hover:bg-white/[0.18]"
-          >
-            {ctaLabel}
-          </Link>
+          <div className="relative z-10 flex items-center gap-2">
+            <AuthNavControl />
+            <Link
+              href={ctaHref}
+              className="inline-flex h-12 shrink-0 items-center rounded-xl border border-white/32 bg-white/[0.08] px-4 text-xs font-semibold uppercase tracking-[0.11em] !text-white transition hover:bg-white/[0.18]"
+            >
+              {ctaLabel}
+            </Link>
+          </div>
         </div>
 
         <div

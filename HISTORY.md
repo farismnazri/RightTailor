@@ -255,3 +255,28 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 19:38
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 19:38
+- Summary: Wired Supabase Google auth using `@supabase/ssr` + `@supabase/supabase-js` with cookie-based session handling, OAuth callback exchange route, login screen, protected route pattern (`/app`, `/profiles`), and minimal nav auth controls (`Sign in`/`Sign out` + signed-in user indicator).
+- Files Changed:
+  - .env.example
+  - STACK.md
+  - apps/web/middleware.ts
+  - apps/web/lib/supabase/env.ts
+  - apps/web/lib/supabase/client.ts
+  - apps/web/lib/supabase/server.ts
+  - apps/web/lib/supabase/middleware.ts
+  - apps/web/app/auth/callback/route.ts
+  - apps/web/app/login/page.tsx
+  - apps/web/app/app/page.tsx
+  - apps/web/app/profiles/page.tsx
+  - apps/web/components/AuthNavControl.tsx
+  - apps/web/components/CardNav.tsx
+  - apps/web/package.json
+  - pnpm-lock.yaml
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

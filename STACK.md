@@ -19,11 +19,15 @@ Frontend
 
 Backend
 - Supabase
-  - Auth: Google OAuth (optionally restrict/recognize corporate domains)
+  - Auth: Google OAuth wired with `@supabase/ssr` + `@supabase/supabase-js` (cookie-based SSR session handling)
   - Postgres: relational model fits group orders + participants + orders + permissions
   - RLS: primary authorization mechanism (deny-by-default)
   - Storage: (optional) profile images, fabric swatches
   - Edge Functions: narrowly-scoped admin actions (delete user) without measurement reads
+
+Auth wiring gotchas
+- OAuth callback route is `/auth/callback` and is used for PKCE code exchange.
+- The callback URL must be included in Supabase Auth Redirect URL allow-list (e.g. `http://localhost:3000/auth/callback`) or Google sign-in redirects will fail.
 
 Why Supabase over MongoDB (for this product)
 - Group ordering, permissions, and order states are relational and benefit from Postgres constraints + transactions.
@@ -49,3 +53,4 @@ Observability
 Decision log (to append as you go)
 - ADR-0001: Supabase chosen as backend for auth + Postgres + RLS.
 - ADR-0002: Measurement data stored as versioned “measurement sets” (append-only) for audit and rollback.
+- ADR-0003: Next.js auth wired using Supabase SSR primitives (`@supabase/ssr`) with middleware-driven cookie session refresh and OAuth callback exchange.
