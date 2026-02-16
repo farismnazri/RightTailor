@@ -179,3 +179,16 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 18:39
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 18:39
+- Summary: Updated landing navigation to a hidden expandable card menu with left hamburger toggle, centered RightTailor logo image, right-side Get started CTA, and raised layering so dropdown content renders above hero cards.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/CardNav.tsx
+  - apps/web/public/righttailor-logo.png
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck

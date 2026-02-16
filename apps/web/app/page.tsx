@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import CardNav, { type CardNavItem } from "@/components/CardNav";
 import Grainient from "@/components/Grainient";
 import Silk from "@/components/Silk";
 
@@ -95,6 +96,36 @@ const groupCards = [
   },
 ];
 
+const topNavItems: CardNavItem[] = [
+  {
+    label: "How it works",
+    bgColor: "#0D0716",
+    textColor: "#fff",
+    links: [
+      { label: "Profiles flow", href: "#how-it-works", ariaLabel: "How it works profiles flow" },
+      { label: "Tailor delegation", href: "#how-it-works", ariaLabel: "How it works tailor delegation" },
+    ],
+  },
+  {
+    label: "Group orders",
+    bgColor: "#170D27",
+    textColor: "#fff",
+    links: [
+      { label: "Wedding party", href: "#group-orders", ariaLabel: "Wedding party section" },
+      { label: "Corporate batch", href: "#group-orders", ariaLabel: "Corporate batch section" },
+    ],
+  },
+  {
+    label: "Size matching",
+    bgColor: "#271E37",
+    textColor: "#fff",
+    links: [
+      { label: "Curated charts", href: "#size-matching", ariaLabel: "Curated size charts section" },
+      { label: "Recommendation flow", href: "#size-matching", ariaLabel: "Recommendation section" },
+    ],
+  },
+];
+
 export default function Home() {
   const [selectedUseCase, setSelectedUseCase] = useState<UseCase>("corporate");
   const activeUseCase = useCaseDetails[selectedUseCase];
@@ -139,38 +170,8 @@ export default function Home() {
       </div>
 
       <main className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-8 pt-8 sm:px-10 lg:px-12">
-        <nav className="animate-rise flex items-center justify-between">
-          <p className="font-display text-xl font-semibold tracking-tight text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)]">
-            RightTailor
-          </p>
-          <div className="hidden items-center gap-3 text-sm font-semibold md:flex">
-            <div className="flex items-center gap-6">
-              <a
-                className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
-                href="#how-it-works"
-              >
-                How it works
-              </a>
-              <a
-                className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
-                href="#group-orders"
-              >
-                Group orders
-              </a>
-              <a
-                className="text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.75)] transition-colors hover:text-white"
-                href="#size-matching"
-              >
-                Size matching
-              </a>
-            </div>
-            <Link
-              href="/get-measured"
-              className="rounded-full border border-white/35 bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.11em] !text-white shadow-[0_10px_24px_-16px_rgba(0,0,0,0.85)] transition hover:-translate-y-0.5 hover:bg-white/20"
-            >
-              Get started
-            </Link>
-          </div>
+        <nav className="animate-rise relative z-[120]">
+          <CardNav items={topNavItems} logoSrc="/righttailor-logo.png" ctaHref="/get-measured" />
         </nav>
 
         <section className="glass-card mt-10 grid gap-8 rounded-3xl border border-black/5 px-6 py-8 shadow-sm sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
