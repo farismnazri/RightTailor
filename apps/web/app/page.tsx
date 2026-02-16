@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Grainient from "@/components/Grainient";
 
 type UseCase = "corporate" | "wedding" | "quick_dress";
 
@@ -98,8 +99,35 @@ export default function Home() {
   const activeUseCase = useCaseDetails[selectedUseCase];
 
   return (
-    <div className="relative min-h-screen overflow-x-clip pb-16">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+    <div className="relative isolate min-h-screen overflow-x-clip pb-16">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <Grainient
+          color1="#f9ff9e"
+          color2="#8bda9f"
+          color3="#ffb380"
+          timeSpeed={0.55}
+          colorBalance={-0.2}
+          warpStrength={4}
+          warpFrequency={12}
+          warpSpeed={0.3}
+          warpAmplitude={80}
+          blendAngle={0}
+          blendSoftness={0.05}
+          rotationAmount={500}
+          noiseScale={2}
+          grainAmount={0.1}
+          grainScale={2}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1}
+          saturation={1}
+          centerX={0}
+          centerY={0}
+          zoom={0.9}
+        />
+      </div>
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-[5]">
+        <div className="absolute inset-0 bg-white/38" />
         <div className="absolute -left-16 top-24 h-52 w-52 rounded-full bg-accent-soft/80 blur-3xl" />
         <div className="absolute -right-20 top-6 h-64 w-64 rounded-full bg-warm-soft/85 blur-3xl" />
       </div>

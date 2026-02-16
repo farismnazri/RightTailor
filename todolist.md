@@ -54,3 +54,4 @@ Progress log
 - 2026-02-16: Scoped back to landing-only first slice by restoring `/get-measured` to a coming-soon placeholder, keeping `/group-order` as placeholder, and preserving the interactive public landing page at `/` with use-case toggle and product sections.
 - 2026-02-16: Added a ClickSpark interaction preview to the landing page (`apps/web/app/page.tsx`) using a local React Bits component (`apps/web/components/ClickSpark.jsx`) with spark settings for visual click feedback.
 - 2026-02-16: Removed the ClickSpark preview section from the landing page and deleted the unused `apps/web/components/ClickSpark.jsx` component to keep the public site focused.
+- 2026-02-16: Added a full-page Grainient animated background to the landing page without a bordered demo card (`apps/web/components/Grainient.jsx`, `apps/web/components/Grainient.css`, `apps/web/app/page.tsx`) and installed `ogl` for rendering.

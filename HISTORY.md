@@ -47,3 +47,18 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:10
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:10
+- Summary: Applied Grainient as a full-page landing background (no bordered demo section) using the provided settings.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/Grainient.jsx
+  - apps/web/components/Grainient.css
+  - apps/web/package.json
+  - pnpm-lock.yaml
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
