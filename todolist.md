@@ -19,7 +19,7 @@ P1 — Auth + profiles
   Acceptance: create/list/edit profiles; RLS blocks other users
 
 P2 — Measurements (sensitive)
-- [x] Frontend-only `/get-measured` workspace: create named measurement sets, view history, delete sets, and edit fields from Measurement Set PDF (stored locally for now)
+- [ ] Frontend-only `/get-measured` workspace: create named measurement sets, view history, delete sets, and edit fields from Measurement Set PDF (stored locally for now)
 - [ ] Define measurement schema v1 (zod) + units handling
   Acceptance: validation passes; schema stored in packages/shared
 - [ ] measurement_sets table + RLS policies (owner select; delegated insert)
@@ -51,4 +51,4 @@ P6 — Hardening
 Progress log
 - 2026-02-16: Bootstrapped pnpm workspace at repo root (`package.json`, `pnpm-workspace.yaml`, `.gitignore`) with `apps/web` Next.js + TypeScript + Tailwind app and root scripts for `pnpm dev`, `pnpm lint`, and `pnpm typecheck`.
 - 2026-02-16: Replaced starter UI with interactive public landing page in `apps/web/app/page.tsx`, custom styling in `apps/web/app/globals.css`, updated metadata/fonts in `apps/web/app/layout.tsx`, and added coming-soon flow pages at `apps/web/app/get-measured/page.tsx` and `apps/web/app/group-order/page.tsx`.
-- 2026-02-16: Implemented `/get-measured` measurement management UI with browser-local history, create/delete, and full measurement form fields based on `Measurement Set.pdf` via `apps/web/app/get-measured/page.tsx` and `apps/web/app/get-measured/measurement-fields.ts`.
+- 2026-02-16: Scoped back to landing-only first slice by restoring `/get-measured` to a coming-soon placeholder, keeping `/group-order` as placeholder, and preserving the interactive public landing page at `/` with use-case toggle and product sections.

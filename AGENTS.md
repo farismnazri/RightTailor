@@ -34,6 +34,10 @@ Workflow rules for Codex
   - Run verification commands locally (see below) and fix failures.
 - Do not introduce new packages unless necessary; justify additions in STACK.md (Decision log section).
 - Keep the repo structure consistent; do not create duplicate “utils” or “lib” folders.
+- Hard rule after each completed task and passing verification:
+  - Append a new entry to HISTORY.md with date/time in Asia/Kuala_Lumpur, summary, files changed, and verification commands.
+  - Run `git add -A`, `git commit -m "<type>: <short summary>"`, then `git push`.
+  - Never commit secrets. Keep `.env` and `.env.*` ignored; only `.env.example` may be committed.
 
 Suggested repo structure
 - apps/web               Next.js app
