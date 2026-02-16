@@ -19,7 +19,7 @@ P1 — Auth + profiles
   Acceptance: create/list/edit profiles; RLS blocks other users
 
 P2 — Measurements (sensitive)
-- [ ] Frontend-only `/get-measured` workspace: create named measurement sets, view history, delete sets, and edit fields from Measurement Set PDF (stored locally for now)
+- [x] Frontend-only `/get-measured` workspace: create named measurement sets, view history, delete sets, and edit fields from Measurement Set PDF (stored locally for now)
 - [ ] Define measurement schema v1 (zod) + units handling
   Acceptance: validation passes; schema stored in packages/shared
 - [ ] measurement_sets table + RLS policies (owner select; delegated insert)
@@ -61,3 +61,4 @@ Progress log
 - 2026-02-16: Adjusted typography for dark backgrounds by making non-card text white with drop-shadow treatment in `apps/web/app/page.tsx` (nav branding/links and section headings/descriptions outside cards).
 - 2026-02-16: Increased top nav tab contrast on dark background and simplified hero CTA into a single `Book an appointment` button (`apps/web/app/page.tsx`).
 - 2026-02-16: Enforced pure white top nav tab text (including hover state) and pure white `Book an appointment` button text in `apps/web/app/page.tsx`.
+- 2026-02-16: Rebuilt `/get-measured` with two tabs (`Book appointment`, `Input measurement`), matching layered dark background, local-save booking form (name/email/pax), and full measurement set entry (name, optional image URL, units toggle, and PDF-based measurement fields) via `apps/web/app/get-measured/page.tsx` and `apps/web/app/get-measured/measurement-fields.ts`.

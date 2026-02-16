@@ -131,3 +131,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:51
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:51
+- Summary: Reworked /get-measured into tabbed booking + measurement input flows with landing-matched background and local-save placeholders for future database integration.
+- Files Changed:
+  - apps/web/app/get-measured/page.tsx
+  - apps/web/app/get-measured/measurement-fields.ts
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
