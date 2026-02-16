@@ -23,3 +23,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:02
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:02
+- Summary: Integrated React Bits ClickSpark into the public landing page as an interactive click preview panel with the provided spark settings.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/ClickSpark.jsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
