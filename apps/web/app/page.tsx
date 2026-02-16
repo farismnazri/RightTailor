@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Grainient from "@/components/Grainient";
+import Silk from "@/components/Silk";
 
 type UseCase = "corporate" | "wedding" | "quick_dress";
 
@@ -100,31 +101,36 @@ export default function Home() {
 
   return (
     <div className="relative isolate min-h-screen overflow-x-clip pb-16">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+        <Silk speed={5} scale={1} color="#7B7481" noiseIntensity={0} rotation={0} />
+      </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <Grainient
-          color1="#1c5182"
-          color2="#002757"
-          color3="#04060c"
-          timeSpeed={0.55}
-          colorBalance={-0.2}
-          warpStrength={4}
-          warpFrequency={12}
-          warpSpeed={0.3}
-          warpAmplitude={80}
-          blendAngle={0}
-          blendSoftness={0.05}
-          rotationAmount={500}
-          noiseScale={1.25}
-          grainAmount={0}
-          grainScale={2}
-          grainAnimated={false}
-          contrast={1.05}
-          gamma={1.3}
-          saturation={1}
-          centerX={0.25}
-          centerY={-0.21}
-          zoom={0.9}
-        />
+        <div className="h-full w-full opacity-40">
+          <Grainient
+            color1="#1c5182"
+            color2="#002757"
+            color3="#04060c"
+            timeSpeed={0.55}
+            colorBalance={-0.2}
+            warpStrength={4}
+            warpFrequency={12}
+            warpSpeed={0.3}
+            warpAmplitude={80}
+            blendAngle={0}
+            blendSoftness={0.05}
+            rotationAmount={500}
+            noiseScale={1.25}
+            grainAmount={0}
+            grainScale={2}
+            grainAnimated={false}
+            contrast={1.05}
+            gamma={1.3}
+            saturation={1}
+            centerX={0.25}
+            centerY={-0.21}
+            zoom={0.9}
+          />
+        </div>
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-[5]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020611]/20 to-[#020611]/45" />

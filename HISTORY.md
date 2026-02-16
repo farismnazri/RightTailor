@@ -84,3 +84,17 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 16:21
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 16:21
+- Summary: Added Silk as a full-page layer behind Grainient and set the Grainient color layer to 40% opacity on the landing page.
+- Files Changed:
+  - apps/web/app/page.tsx
+  - apps/web/components/Silk.jsx
+  - apps/web/package.json
+  - pnpm-lock.yaml
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
