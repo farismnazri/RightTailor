@@ -181,8 +181,8 @@ export default function Home() {
           itemDistance={170}
           itemScale={0.04}
           itemStackDistance={26}
-          stackPosition="34%"
-          scaleEndPosition="18%"
+          stackPosition="18%"
+          scaleEndPosition="10%"
           baseScale={0.9}
           blurAmount={2}
         >

@@ -74,3 +74,4 @@ Progress log
 - 2026-02-16: Wired Supabase Auth (Google) using `@supabase/ssr` with cookie-based SSR session handling, added `/auth/callback` code exchange route, created `/login` plus protected placeholder routes (`/app`, `/profiles`), and integrated nav `Sign in`/`Sign out` with a signed-in user indicator.
 - 2026-02-16: Debugged ScrollStack pinning by switching to stable precomputed card offsets and retuned stack position/blur so the hero card leads and subsequent cards stack over it more clearly.
 - 2026-02-16: Raised the ScrollStack start position by reducing top spacing so stacked cards align closer to the top/navigation.
+- 2026-02-16: Fixed low stacking by clamping initial downward translation in ScrollStack and retuning stack pin position higher so card 2 overlays card 1 earlier and closer to the top.

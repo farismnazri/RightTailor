@@ -164,7 +164,9 @@ const ScrollStack = ({
       const isPinned = scrollTop >= pinStart && scrollTop <= pinEnd;
 
       if (isPinned) {
-        translateY = scrollTop - cardTop + stackPositionPx + itemStackDistance * i;
+        const rawTranslate = scrollTop - cardTop + stackPositionPx + itemStackDistance * i;
+        // Prevent cards from being pushed downward before they should begin stacking.
+        translateY = Math.max(0, rawTranslate);
       } else if (scrollTop > pinEnd) {
         translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i;
       }

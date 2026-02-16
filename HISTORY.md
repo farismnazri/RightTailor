@@ -304,3 +304,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 20:23
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 20:23
+- Summary: Adjusted ScrollStack pin behavior by preventing downward translation at initial scroll and moving stack pin target higher, so card 2 stacks over card 1 earlier and the whole sequence sits closer to the top.
+- Files Changed:
+  - apps/web/components/ScrollStack.tsx
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
