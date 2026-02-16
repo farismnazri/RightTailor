@@ -5,6 +5,7 @@ import { useState } from "react";
 import CardNav, { type CardNavItem } from "@/components/CardNav";
 import Grainient from "@/components/Grainient";
 import Silk from "@/components/Silk";
+import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 
 type UseCase = "corporate" | "wedding" | "quick_dress";
 
@@ -240,20 +241,20 @@ export default function Home() {
             A practical flow for self profiles, children profiles, and tailor delegation before ordering suits, wedding
             outfits, or dresses.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <ScrollStack className="mt-2" useWindowScroll itemDistance={74} itemStackDistance={24} baseScale={0.9}>
             {howItWorks.map((step, index) => (
-              <article
+              <ScrollStackItem
                 key={step.title}
-                className="group rounded-2xl border border-black/7 bg-white/80 p-5 transition duration-300 hover:-translate-y-1 hover:border-accent/35 hover:bg-white"
+                itemClassName="min-h-[210px] border border-black/7 bg-white/80 transition duration-300 hover:border-accent/35 hover:bg-white"
               >
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-warm-soft text-sm font-semibold text-warm">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 font-display text-xl font-semibold tracking-tight">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
-              </article>
+                <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-foreground">{step.title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-muted">{step.description}</p>
+              </ScrollStackItem>
             ))}
-          </div>
+          </ScrollStack>
         </section>
 
         <section id="group-orders" className="mt-14">
@@ -264,27 +265,27 @@ export default function Home() {
             For wedding parties and corporate batches, define one shared fabric, cut, and color while each participant
             keeps individual measurements.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <ScrollStack className="mt-2" useWindowScroll itemDistance={68} itemStackDistance={22} baseScale={0.91}>
             {groupCards.map((card) => {
               const isHighlighted = card.id === selectedUseCase;
               return (
-                <article
+                <ScrollStackItem
                   key={card.id}
-                  className={`rounded-2xl border p-5 transition duration-300 ${
+                  itemClassName={`min-h-[210px] border transition duration-300 ${
                     isHighlighted
                       ? "border-accent bg-accent-soft/65 shadow-sm"
                       : "border-black/7 bg-white/80 hover:border-accent/30 hover:bg-white"
                   }`}
                 >
-                  <h3 className="font-display text-xl font-semibold tracking-tight">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{card.description}</p>
+                  <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground">{card.title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-muted">{card.description}</p>
                   {isHighlighted ? (
                     <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-accent">Active scenario</p>
                   ) : null}
-                </article>
+                </ScrollStackItem>
               );
             })}
-          </div>
+          </ScrollStack>
         </section>
 
         <section id="size-matching" className="mt-14">

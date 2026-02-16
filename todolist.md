@@ -66,3 +66,4 @@ Progress log
 - 2026-02-16: Removed old background bleed by setting a global dark fallback and applied the same layered dark backdrop system to `/`, `/get-measured`, and `/group-order` for consistent full-page coverage.
 - 2026-02-16: Added a top-right desktop nav `Get started` CTA on the landing page that routes to `/get-measured`, matching the `Book an appointment` action.
 - 2026-02-16: Reworked landing top nav into a hidden expandable menu bar with left open/close control, centered brand logo image, right `Get started` CTA, and higher z-index so the menu stays above hero content.
+- 2026-02-16: Added `ScrollStack` card behavior to landing sections so `How it works` and `Group orders` cards now animate/stack during page scroll with smooth transitions.

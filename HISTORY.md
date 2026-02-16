@@ -192,3 +192,15 @@ Track completed task slices here after verification passes.
 - Verification:
   - pnpm lint
   - pnpm typecheck
+
+## 2026-02-16 18:47
+- Date/Time (Asia/Kuala_Lumpur): 2026-02-16 18:47
+- Summary: Implemented a reusable ScrollStack component and applied it to landing page card sections (`How it works`, `Group orders`) for stacked scroll interactions.
+- Files Changed:
+  - apps/web/components/ScrollStack.tsx
+  - apps/web/app/page.tsx
+  - todolist.md
+  - HISTORY.md
+- Verification:
+  - pnpm lint
+  - pnpm typecheck
